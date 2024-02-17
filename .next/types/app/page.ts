@@ -1,4 +1,4 @@
-// File: C:\Users\USER\Downloads\TEST 11\rick-and-morty-api-react-app\app\page.js
+// File: C:\Users\USER\Downloads\TEST 11\Rick-and-Morty-Test\app\page.js
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
