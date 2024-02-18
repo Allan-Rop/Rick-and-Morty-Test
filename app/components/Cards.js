@@ -2,9 +2,27 @@ import { useState } from "react";
 
 export function CharacterCards({ character }) {
     const [clicked, setClicked] = useState(true);
+    const [comment, setComment] = useState("");
     
     function toggleClick() {
         setClicked(!clicked);
+    }
+
+    function handleChange(event) {
+        setComment(event.target.value);
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        // Here, you would typically send the comment and the details of the character
+        // to your backend (Node.js, PHP, etc.) server.js
+        // and save it to the MySQL database.
+        console.log("Comment submitted:", comment);
+        console.log("Character details:", character);
+        // Reset the comment field after submission
+        setComment("");
+        // Prevent the click event from reaching the parent card and toggling it back
+        event.stopPropagation();
     }
     
     let statusIcon = "";
@@ -26,7 +44,7 @@ export function CharacterCards({ character }) {
             {clicked ? 
             (<div className="card" onClick={toggleClick}>
                 <div>
-                    <img src={character.image} className="cardImage"></img>
+                    <img src={character.image} className="cardImage" alt={character.name}></img>
                 </div>
 
                 <div className="container">
@@ -43,7 +61,7 @@ export function CharacterCards({ character }) {
             </div>) : 
             <div className="cardMax" onClick={toggleClick}>
                 <div className="containerMaxImage">
-                    <img src={character.image} className="cardImage"></img>
+                    <img src={character.image} className="cardImage" alt={character.name}></img>
                 </div>
 
                 <div className="container">
@@ -68,6 +86,14 @@ export function CharacterCards({ character }) {
                         <span>Episodes:</span>
                         <h4>{character.episode.length}</h4>
                     </div>
+                    <form onSubmit={handleSubmit} onClick={(e) => e.stopPropagation()}>
+                        <textarea
+                            value={comment}
+                            onChange={handleChange}
+                            placeholder="Add your comment..."
+                        />
+                        <button type="submit">Submit</button>
+                    </form>
                 </div>
             </div>
             }
@@ -76,6 +102,7 @@ export function CharacterCards({ character }) {
 
     );
 }
+
 
 export function LocationCards({ location }) {
     return (
