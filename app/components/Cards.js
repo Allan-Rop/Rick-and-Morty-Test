@@ -14,16 +14,30 @@ export function CharacterCards({ character }) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        // Here, you would typically send the comment and the details of the character
-        // to your backend (Node.js, PHP, etc.) server.js
-        // and save it to the MySQL database.
-        console.log("Comment submitted:", comment);
-        console.log("Character details:", character);
-        // Reset the comment field after submission
-        setComment("");
-        // Prevent the click event from reaching the parent card and toggling it back
+    
+        fetch('/api/submit-comment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ comment, character })
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to submit comment');
+          }
+          console.log('Comment submitted successfully');
+         
+
+          setComment("");
+        })
+        .catch(error => {
+          console.error('Error submitting comment:', error);
+        });
+    
         event.stopPropagation();
     }
+    
     
     let statusIcon = "";
 
@@ -126,3 +140,4 @@ export function LocationCards({ location }) {
         </div>
     )
 }
+
