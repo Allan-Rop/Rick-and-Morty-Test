@@ -48,6 +48,8 @@ RESULTS
 5. On the Location page see screenshots below;
 ![alt text](image-3.png)
 6. Fetching Comments and storing them to mysql database including character details.
+   #### To Note
+   Remember to change your username and password for your database connection 
 ![alt text](image-5.png)
 ![alt text](image-6.png)
 
@@ -59,3 +61,7 @@ Search and Filtering: Implementing search and filter functionality efficiently w
 Image Rendering: Rendering images of residents alongside their details required careful handling, especially with dynamic data. I resolved this by ensuring proper image storage and retrieval mechanisms, along with appropriate error handling to handle missing or invalid images gracefully.
 
 Persisted Notes: Implementing persisted notes functionality involved managing state across multiple components and ensuring data consistency. I addressed this challenge by using state management libraries like Redux and implementing robust data storage and retrieval mechanisms.
+
+## Regards
+Allan Rop
+Rick and Morty API's
